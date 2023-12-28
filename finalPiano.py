@@ -3,9 +3,6 @@
     Author: Bhadra Rupesh
 """
 
-
-
-
 """
 
 Example chords to try (try other chords too):
@@ -23,9 +20,6 @@ Notes to select: no need to select (same notes)
 Should output: Dm7 add4
 
 """
-
-
-
 
 #imports tkinter
 from tkinter import Tk, Frame, BOTH, Label, PhotoImage
