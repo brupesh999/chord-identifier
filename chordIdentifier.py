@@ -119,37 +119,6 @@ def findMajorKeySignatureList(note):
 
     return keyList
 
-# functionality to get interval above note (not used in GUI yet)
-def majIntervalAboveNote(rootNote, intervalNum):
-    keyList = findMajorKeySignatureList(rootNote)
-    rootNoteNum = numberOfNote(rootNote)
-    beginning = keyList.index(rootNote[:len(rootNote) - 1])
-    endNote = keyList[(beginning + intervalNum - 1) % 7]
-    if numberOfNote(endNote + "1") < rootNoteNum:
-        endNote = endNote + "2"
-    else:
-        endNote = endNote + "1"
-    return endNote
-
-# related to previous function
-def reversedInterval(rootNote, note2):
-    reversedNoteRoot = note2[:len(note2) - 1] + rootNote[-1]
-    reversedNote2 = rootNote[:len(note2) - 1] + note2Num[-1]
-    flippedInterval = getInterval(reversedNoteRoot, reversedNote2)
-    quality = flippedInterval[0]
-
-    if quality == "d":
-        newQuality = "A"
-    elif quality == "A":
-        newQuality= "d"
-    elif quality == "M":
-        newQuality = "m"
-    elif quality == "m":
-        newQuality = "M"
-
-    reverseInterval = newQuality + str(9 - flippedInterval[1])
-    return reverseInterval
-
 # necessary for getInterval
 def getNaturalIndex(rootNote):
     naturalList = ["a1", "b1", "c1", "d1", "e1", "f1", "g1", \
@@ -498,13 +467,6 @@ def findChord(chordArrangement):
         return False
 
     return finalChord, superscript
-    # i can explain the algorithm in class if I have time
-
-# not used
-def allChordsFind(chordArrangement):
-    if checkNoRepeats(chord) == False:
-        print("This chord has one or more natural notes repeated.")
-    return
 
 # good function to get interval above note but not used in final GUI
 def getIntervalAboveNote(rootNote, interval):
@@ -587,29 +549,34 @@ def returnSelectOptions(note):
         finalPosSelect.append(convertToFormatted(posSelect))
     return finalPosSelect
 
-# mainly has test code but all commented out
+# mainly has test code
 if __name__ == "__main__":
 
     print()
-    #promptChord = ("\nPlease enter the notes in your chord in order (type the letter, flats/sharps if necessary, and a number (1 or 2) to indicate the octave).\nFor example, you can type: Eb1, C#1, or A2. Press enter after each individual note. When you are done, please sumbit 'end' after another enter.\n\n")
-    #userNoteChord = getUserNotesListChord(promptChord)
-    #print(userNoteChord)
 
-    #print(returnSelectOptions("Ebb1"))
-    #print(returnSelectOptions("A2"))
+    # Because this file is just imported for functions, doesn't output anything
+    # Below is code that would show a text-based interactive version
+    """
+    promptChord = ("\nPlease enter the notes in your chord in order (type the letter, flats/sharps if necessary, and a number (1 or 2) to indicate the octave).\nFor example, you can type: Eb1, C#1, or A2. Press enter after each individual note. When you are done, please sumbit 'end' after another enter.\n\n")
+    userNoteChord = getUserNotesListChord(promptChord)
+    print(userNoteChord)
 
-    #print(findMajorKeySignatureList("f#"))
+    print(returnSelectOptions("Ebb1"))
+    print(returnSelectOptions("A2"))
 
-    #print(getArrangements({"A1": 0, "C1": 3, "E1": 7}))
-    #mergedNoteChord = mergeChord(userNoteChord)
-    #print(mergedNoteChord)
+    print(findMajorKeySignatureList("f#"))
 
-    ##print(getArrangements(mergedNoteChord))
+    print(getArrangements({"A1": 0, "C1": 3, "E1": 7}))
+    mergedNoteChord = mergeChord(userNoteChord)
+    print(mergedNoteChord)
 
-    #print(getIntervalAboveNote("ab3", "m6"))
-    #playChordSeparate(userNoteChord)
+    print(getArrangements(mergedNoteChord))
 
-    #print(findChord(mergedNoteChord))
+    print(getIntervalAboveNote("ab3", "m6"))
+    playChordSeparate(userNoteChord)
 
-    #findChord(getArrangements(mergedNoteChord)[1])
-    #print("".join(findChord(mergedNoteChord)[0]), "".join(findChord(mergedNoteChord)[1]))
+    print(findChord(mergedNoteChord))
+
+    findChord(getArrangements(mergedNoteChord)[1])
+    print("".join(findChord(mergedNoteChord)[0]), "".join(findChord(mergedNoteChord)[1]))
+    """
