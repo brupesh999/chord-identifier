@@ -1,8 +1,6 @@
 """
     Description: This is the final project (imports chordIdentifier)
-    Author: Bhadra Rupesh (used inspiration for piano GUI from online source because
-    I hadn't used tkinter before but I modified a lot of the code and understand it)
-    Date: 2021
+    Author: Bhadra Rupesh
 """
 
 

@@ -1,7 +1,6 @@
 """
     Description: just the chord identifier, is imported later in final (finalPiano.py)
     Author: Bhadra Rupesh
-    Date: 2021
 """
 import pyaudio # this is only necessary for a function at the end that generates tones of audio, not used in final
 import numpy as np # this is also used for the tone generating function
